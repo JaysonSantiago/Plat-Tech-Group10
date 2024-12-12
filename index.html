@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group 10 Website</title>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>G</span>roup <span>1</span>0</h1>
+          </a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+          <div class="bar"></div>
+        </div>
+        <div class="nav-list">
+          <ul>
+            <li><a href="#hero" data-after="Home">Home</a></li>
+            <li><a href="#website" data-after="Website">Website</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>Hello, <span></span></h1>
+        <h1>We Are <span></span></h1>
+        <h1>Group 10<span></span></h1>
+      </div>
+      <div class="image-container">
+        <img src="ggg.jpg" alt="Your Image" class="hero-image">
+      </div>
+    </div>
+  </section>
+  <!-- End Hero Section -->
+
+  <!-- Footer -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+        <h1><span>G</span>roup <span>1</span>0</h1>
+      </div>
+        </div>
+      </div>
+      <p>Copyright © 2024 Group10. All rights reserved</p>
+    </div>
+  </section>
+  <!-- End Footer -->
+  <section id="website">
+    <div class="website container">
+      <h2>Jaylo Website</h2>
+      <a href="Jaylo.html" class="project-link">Visit Jaylo Website</a>
+    </div>
+  
+    <div class="website container">
+      <h2>Jayson Website</h2>
+      <a href="Jayson.html" class="project-link">Visit Jayson Website</a>
+    </div>
+  
+    <div class="website container">
+      <h2>Rochelle Website</h2>
+      <a href="Rochelle.html" class="project-link">Visit Rochelle Website</a>
+    </div>
+
+  <div class="website container">
+    <h2>Reniel Ros Website</h2>
+    <a href="Reniel.html" class="project-link">Visit Reniel Website</a>
+  </div>
+</section>
+  
+  <style>
+    @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+a {
+    text-decoration: none;
+}
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.brand h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: white;
+}
+.brand h1 span {
+    color: rgb(0, 4, 255);
+}
+
+/* Header section */
+#header {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: auto;
+}
+#header .header {
+    min-height: 8vh;
+    background-color: rgba(31, 30, 30, 0.24);
+    transition: 0.3s ease background-color;
+}
+#header .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    padding: 0 10px;
+}
+#header .nav-list ul {
+    list-style: none;
+    position: absolute;
+    background-color: rgb(31, 30, 30);
+    width: 100vw;
+    height: 100vh;
+    left: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: 0.5s ease left;
+}
+#header .nav-list ul.active {
+    left: 0%;
+}
+#header .nav-list ul a {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    padding: 20px;
+    display: block;
+}
+
+/* End Header section */
+
+/* Hero Section */
+#hero {
+    background-color: black;
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    z-index: 1;
+}
+#hero::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.7;
+    z-index: -1;
+}
+#hero .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+    justify-content: flex-start;
+}
+#hero h1 {
+    display: block;
+    width: fit-content;
+    font-size: 4rem;
+    position: relative;
+    color: transparent;
+    animation: text_reveal 0.5s ease forwards;
+    animation-delay: 1s;
+}
+#hero h1:nth-child(1) {
+    animation-delay: 1s;
+}
+#hero h1:nth-child(2) {
+    animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+    animation: text_reveal_name 0.5s ease forwards;
+    animation-delay: 3s;
+}
+#hero h1 span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: rgb(89, 0, 255);
+    animation: text_reveal_box 1s ease;
+    animation-delay: 0.5s;
+}
+#hero h1:nth-child(1) span {
+    animation-delay: 0.5s;
+}
+#hero h1:nth-child(2) span {
+    animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) span {
+    animation-delay: 2.5s;
+}
+/* Styling the container for the image */
+.image-container {
+    position: absolute; 
+    right: 0; 
+    margin-right: 90px;
+    top: 55%; 
+    transform: translateY(-50%); 
+    padding-right: 80px; 
+}
+
+.hero-image {
+    width: 550px; 
+    height: 550px;
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 5px solid transparent;
+    position: relative; 
+}
+/* End Hero Section */
+
+/* Footer */
+#footer {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+#footer .footer {
+    min-height: 200px;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+
+#footer p {
+    color: white;
+    font-size: 1.3rem;
+    text-align: center;
+}
+/* End Footer */
+
+/* Keyframes */
+@keyframes hamburger_puls {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.4);
+    }
+}
+@keyframes text_reveal_box {
+    50% {
+        width: 100%;
+        left: 0;
+    }
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+@keyframes text_reveal {
+    100% {
+        color: white;
+        font-size: 120px;
+        padding-right: 500px;
+    }
+}
+@keyframes text_reveal_name {
+    100% {
+        color: rgb(89, 0, 255);
+        font-weight: 500;
+        font-size: 120;
+        padding-right: 100px;
+    }
+}
+/* End Keyframes */
+
+    /* Hero */
+    #hero h1 {
+        font-size: 8rem;
+    }
+
+/* Media Query For Desktop */
+@media only screen and (min-width: 1200px) {
+    /* header */
+    #header .hamburger {
+        display: none;
+    }
+    #header .nav-list ul {
+        position: initial;
+        display: block;
+        height: auto;
+        width: fit-content;
+        background-color: transparent;
+    }
+    #header .nav-list ul li {
+        display: inline-block;
+    }
+    #header .nav-list ul a {
+        padding: 10px 25px;
+    }
+    #header .nav-list ul a:hover {
+        color: rgb(89, 0, 255)
+    }
+    /* End header */
+}
+
+
+
+
+   /* Website Section */
+#website {
+  padding: 50px 20px;
+  background-color: #000000;
+  text-align: center;
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#website h2 {
+  font-size: 3.5rem;
+  margin-bottom: 30px;
+  color: #ffffff !important;
+}
+
+.website.container {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3f373d;
+  padding: 10px; /* Reduced padding */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  width: 200px; /* Smaller width */
+  height: 300px; /* Smaller height */
+}
+
+/* Hover effect */
+.website.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #007BFF;
+  font-size: 20px;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+  color: #007BFF;
+}
+
+/* Responsive Media Query */
+@media only screen and (max-width: 768px) {
+  #website h2 {
+    font-size: 2.5rem;
+  }
+
+  .project-link {
+    font-size: 1.4rem;
+  }
+
+  .website.container {
+    flex: 1 1 45%;
+    width: 90%; /* Adjust width to 90% of parent container */
+    max-width: 250px; /* Prevent too large */
+    margin-bottom: 20px;
+  }
+}
+
+
+
+  </style>
+  
