@@ -2,7 +2,7 @@
 // Function to read contact information from the user_info.txt file
 function getContactInfo() {
     $contactInfo = [];
-    $filePath = __DIR__ . "/user_info.txt"; // Use absolute path to the file
+    $filePath = __DIR__ . "/contact.txt"; // Use absolute path to the file
     
     if (file_exists($filePath)) {
         // Read the entire content of the file
@@ -48,7 +48,7 @@ function updateContactInfo($phone, $email, $birthday, $age, $address) {
         "Address" => $address
     ];
 
-    $filePath = __DIR__ . "/user_info.txt"; // Use absolute path to the file
+    $filePath = __DIR__ . "/contact.txt"; // Use absolute path to the file
 
     // Open the file for writing (create or overwrite)
     $handle = fopen($filePath, 'w');
@@ -65,16 +65,34 @@ function updateContactInfo($phone, $email, $birthday, $age, $address) {
     }
 }
 
+// Function to delete contact information from the file
+function deleteContactInfo() {
+    $filePath = __DIR__ . "/contact.txt";
+    
+    // Clear the file contents
+    if (file_exists($filePath)) {
+        file_put_contents($filePath, '');
+    } else {
+        echo "Error: File does not exist.<br>";
+    }
+}
+
 // Handle form submission for updating contact info
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $phone = $_POST['phone'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $birthday = $_POST['birthday'] ?? '';
-    $age = $_POST['age'] ?? '';
-    $address = $_POST['address'] ?? '';
+    if (isset($_POST['delete'])) {
+        // If the delete button was clicked, delete the contact info
+        deleteContactInfo();
+    } else {
+        // If the form was submitted to update contact info
+        $phone = $_POST['phone'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $birthday = $_POST['birthday'] ?? '';
+        $age = $_POST['age'] ?? '';
+        $address = $_POST['address'] ?? '';
 
-    if ($phone && $email && $birthday && $age && $address) {
-        updateContactInfo($phone, $email, $birthday, $age, $address);
+        if ($phone && $email && $birthday && $age && $address) {
+            updateContactInfo($phone, $email, $birthday, $age, $address);
+        }
     }
 }
 
@@ -92,6 +110,168 @@ $contactInfo = getContactInfo();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<style>
+
+    /* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header and Title */
+h1, h2 {
+    text-align: center;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Contact Information Display */
+.contact-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.contact-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.contact-item:hover {
+    transform: scale(1.05);
+}
+
+.contact-item i {
+    font-size: 2.5em;
+    color: #4CAF50  ;
+    margin-bottom: 10px;
+}
+
+.contact-item h2 {
+    font-size: 0.7rem;
+    color: blue;
+}
+
+/* Form Container */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-wrapper div {
+    width: 100%;
+}
+
+.input-wrapper label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.input-wrapper input,
+.input-wrapper textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.input-wrapper input:focus,
+.input-wrapper textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button[type="submit"]:not([name="delete"]) {
+    margin-bottom: 20px;
+}
+
+button[name="delete"] {
+    background-color: #f44336;
+}
+
+button[name="delete"]:hover {
+    background-color: #d32f2f;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .input-wrapper div {
+        width: calc(50% - 15px);
+    }
+
+    .contact-items {
+        gap: 30px;
+    }
+
+    .form-container {
+        padding: 30px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .contact-items {
+        gap: 40px;
+    }
+}
+
+</style>
+
+
 
 <!-- Displaying current contact information -->
 <div class="contact-items">
@@ -124,7 +304,7 @@ $contactInfo = getContactInfo();
 <!-- Compact Form for updating information in a landscape format -->
 <div class="form-container">
     <form action="" method="POST">
-        <h2>Update My Information</h2>
+        <h2>Edit My Information</h2>
 
         <div class="input-wrapper">
             <div>
@@ -158,114 +338,14 @@ $contactInfo = getContactInfo();
         </div>
 
         <button type="submit">Save Changes</button>
-        
+    </form>
+
+    <!-- Delete Button Form -->
+    <form action="" method="POST" style="margin-top: 30px;">
+        <button type="submit" name="delete">Delete Contact Information</button>
     </form>
 </div>
 
-<style>
-    /* General body styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-}
-
-/* Container for contact items */
-.contact-items {
-    margin-bottom: 20px;
-}
-
-/* Individual contact item styles */
-.contact-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-}
-
-.contact-item i {
-    font-size: 24px;
-    color: #007BFF;
-    margin-right: 15px;
-}
-
-/* Form container styling */
-.form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Form heading */
-.form-container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-/* Input wrapper styling */
-.input-wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-/* Individual input field styling */
-.input-wrapper div {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.input-wrapper div:last-child {
-    margin-right: 0; /* Remove margin from the last item */
-}
-
-/* Input and textarea styling */
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="number"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box; /* Include padding in width calculation */
-}
-
-/* Button styling */
-button {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .input-wrapper {
-        flex-direction: column; /* Stack inputs vertically on small screens */
-    }
-
-    .input-wrapper div {
-        margin-right: 0;
-        margin-bottom: 10px; /* Add bottom margin for spacing */
-    }
-}
-</style>
-
-
 </body>
 </html>
+<script src="script.js"></script>
