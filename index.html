@@ -344,15 +344,15 @@ img {
 
 
 
-
-   /* Website Section */
+/* Website Section */
 #website {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding: 50px 20px;
-  background-color: #000000;
+  background-color: #000000; /* Keep background color of section */
   text-align: center;
   margin-top: 80px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
@@ -360,42 +360,57 @@ img {
 
 #website h2 {
   font-size: 3.5rem;
-  margin-bottom: 30px;
-  color: #ffffff !important;
+  margin-bottom: 20px;
+  color: #000000; /* Text color */
+  font-weight: normal; /* No bold text */
 }
 
+/* Website container */
 .website.container {
-  flex: 1;
+  display: flex; /* Flexbox to center content */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-evenly; /* Evenly distribute space between items */
+  align-items: center; /* Center content horizontally */
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #3f373d;
-  padding: 10px; /* Reduced padding */
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  width: 200px; /* Smaller width */
-  height: 300px; /* Smaller height */
+  background-color: white; /* White background */
+  padding: 20px 30px; /* Adjust padding for better spacing */
+  margin: 10px; /* Spacing between containers */
+  width: 250px; /* Fixed width for a more consistent look */
+  height: 300px; /* Fixed height for box */
+  border: 4px solid #3c00ff; /* Gray border with thicker thickness */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow effect */
+  transition: all 0.3s ease; /* Smooth transition */
 }
 
 /* Hover effect */
 .website.container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px); /* Move box upwards */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  animation: boxHover 0.3s ease forwards; /* Animation on hover */
 }
 
+/* Link Style */
 .project-link {
-  display: inline-block;
-  margin-top: 10px;
-  text-decoration: none;
-  color: #007BFF;
-  font-size: 20px;
+  color: #0800ff; /* Blue text color */
+  font-size: 16px; /* Smaller font size */
+  text-decoration: none; /* No underline */
+  margin-top: 10px; /* Space between content and link */
 }
 
 .project-link:hover {
-  text-decoration: underline;
-  color: #007BFF;
+  color: #0800ff; /* Darker blue on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Animation for hover effect */
+@keyframes boxHover {
+  0% {
+    transform: translateY(-5px); /* Slightly raised at the start */
+  }
+  100% {
+    transform: translateY(0); /* Return to original position */
+  }
 }
 
 /* Responsive Media Query */
@@ -405,16 +420,16 @@ img {
   }
 
   .project-link {
-    font-size: 1.4rem;
+    font-size: 1.4rem; /* Adjust link size on small screens */
   }
 
   .website.container {
-    flex: 1 1 45%;
-    width: 90%; /* Adjust width to 90% of parent container */
-    max-width: 250px; /* Prevent too large */
-    margin-bottom: 20px;
+    width: 90%; /* Container width to fit the screen */
+    margin-bottom: 20px; /* Spacing at the bottom */
   }
 }
+
+
 
 
 
