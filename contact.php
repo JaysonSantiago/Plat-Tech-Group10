@@ -2,7 +2,7 @@
 // Function to read contact information from the user_info.txt file
 function getContactInfo() {
     $contactInfo = [];
-    $filePath = __DIR__ . "/contact.txt"; // Use absolute path to the file
+    $filePath = __DIR__ . "/user_info.txt"; // Use absolute path to the file
     
     if (file_exists($filePath)) {
         // Read the entire content of the file
@@ -48,7 +48,7 @@ function updateContactInfo($phone, $email, $birthday, $age, $address) {
         "Address" => $address
     ];
 
-    $filePath = __DIR__ . "/contact.txt"; // Use absolute path to the file
+    $filePath = __DIR__ . "/user_info.txt"; // Use absolute path to the file
 
     // Open the file for writing (create or overwrite)
     $handle = fopen($filePath, 'w');
@@ -67,7 +67,7 @@ function updateContactInfo($phone, $email, $birthday, $age, $address) {
 
 // Function to delete contact information from the file
 function deleteContactInfo() {
-    $filePath = __DIR__ . "/contact.txt";
+    $filePath = __DIR__ . "/user_info.txt";
     
     // Clear the file contents
     if (file_exists($filePath)) {
